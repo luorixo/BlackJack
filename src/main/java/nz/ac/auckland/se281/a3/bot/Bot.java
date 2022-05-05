@@ -8,6 +8,7 @@ import nz.ac.auckland.se281.a3.Player;
  */
 public class Bot extends Player {
 	
+	// initializing botStrategy variable
 	private final BotStrategy botStrategy;
 
 	public Bot(String name, BotStrategy botStrategy) {
@@ -17,11 +18,11 @@ public class Bot extends Player {
 
 	@Override
 	public Action decideAction(Hand hand) {
-		return botStrategy.decideAction(hand);
+		return botStrategy.decideAction(hand); // decides action based on bot strategy
 	}
 
 	@Override
 	public int makeABet() {
-		return botStrategy.makeABet();
+		return botStrategy.makeABet(); // makes bet based on bot strategy
 	}
 }

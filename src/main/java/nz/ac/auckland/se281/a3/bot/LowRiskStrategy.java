@@ -8,9 +8,9 @@ import nz.ac.auckland.se281.a3.Participant.Action;
 public class LowRiskStrategy implements BotStrategy {
 	@Override
 	public Action decideAction(Hand hand) {
-		// TODO Auto-generated method stub
-		int currentScore = hand.getScore();
+		int currentScore = hand.getScore(); // gets current score
 		
+		// if score is 17 or greater holds, otherwise hits
 		if(currentScore >= 17) {
 			return Action.HOLD;
 		}else {
@@ -20,10 +20,9 @@ public class LowRiskStrategy implements BotStrategy {
 
 	@Override
 	public int makeABet() {
-		// TODO Auto-generated method stub
 		Random randomInt = new Random();
 		
-		int randomBet = (randomInt.nextInt(41)) + 10; // random no. from 10-50 (inclusive)
+		int randomBet = (randomInt.nextInt(41)) + 10; // generates random no. (bet) from 10-50 (inclusive)
 		return randomBet;
 	}
 }

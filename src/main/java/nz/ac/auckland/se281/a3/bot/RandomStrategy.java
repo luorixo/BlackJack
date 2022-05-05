@@ -8,12 +8,11 @@ public class RandomStrategy implements BotStrategy {
 
 	@Override
 	public Action decideAction(Hand hand) {
-		// TODO Auto-generated method stub
 		Random randomBool = new Random();
 		
-		boolean toHit = randomBool.nextBoolean();
+		boolean toHit = randomBool.nextBoolean(); // generates random boolean
 		
-		if(toHit) {
+		if(toHit) { // 50/50 chance to hit or hold
 			return Action.HIT;
 		}else {
 			return Action.HOLD;
@@ -22,10 +21,9 @@ public class RandomStrategy implements BotStrategy {
 
 	@Override
 	public int makeABet() {
-		// TODO Auto-generated method stub
 		Random randomInt = new Random();
 		
-		int randomBet = (randomInt.nextInt(100)) + 1; // random no. from 1-100 (inclusive)
+		int randomBet = (randomInt.nextInt(100)) + 1; // generates random no. (bet) from 1-100 (inclusive)
 		return randomBet;
 	}
 	
