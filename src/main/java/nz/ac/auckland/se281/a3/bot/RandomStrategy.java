@@ -1,12 +1,13 @@
 package nz.ac.auckland.se281.a3.bot;
 
+import nz.ac.auckland.se281.a3.Hand;
 import nz.ac.auckland.se281.a3.Participant.Action;
 import java.util.Random;
 
 public class RandomStrategy implements BotStrategy {
 
 	@Override
-	public Action decideAction() {
+	public Action decideAction(Hand hand) {
 		// TODO Auto-generated method stub
 		Random randomBool = new Random();
 		
@@ -14,7 +15,7 @@ public class RandomStrategy implements BotStrategy {
 		
 		if(toHit) {
 			return Action.HIT;
-		} else {
+		}else {
 			return Action.HOLD;
 		}
 	}
