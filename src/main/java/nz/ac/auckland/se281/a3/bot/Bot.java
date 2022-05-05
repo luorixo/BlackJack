@@ -8,7 +8,7 @@ import nz.ac.auckland.se281.a3.Player;
  */
 public class Bot extends Player {
 
-	public Bot(String name) {
+	public Bot(String name, String botStrategy) {
 		super(name);
 	}
 
