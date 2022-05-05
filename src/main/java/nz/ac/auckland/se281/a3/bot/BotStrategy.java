@@ -1,5 +1,8 @@
 package nz.ac.auckland.se281.a3.bot;
 
-public interface BotStrategy {
+import nz.ac.auckland.se281.a3.Participant.Action;
 
+public interface BotStrategy {
+	Action decideAction();
+	int makeABet();
 }
