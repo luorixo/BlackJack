@@ -19,7 +19,7 @@ public class Dealer extends Participant {
 
 	@Override
 	public Action decideAction(Hand hand) {
-		return strategy.decideAction();
+		return strategy.decideAction(hand);
 	}
 
 }
