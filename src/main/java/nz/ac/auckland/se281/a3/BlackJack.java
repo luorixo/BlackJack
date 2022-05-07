@@ -106,7 +106,16 @@ public class BlackJack {
 	 * change this method for Task 2 and Task 3
 	 */
 	protected void printAndUpdateResults(int round) {
-
+		
+		for (Player player : players) {
+			if(!player.getHand().isBust()) {
+				if((player.getHand().getScore() > dealer.getHand().getScore()) || (player.getHand().isBlackJack() && !dealer.getHand().isBlackJack())) {
+					player.incrementWins();
+				}
+			}
+			
+		}
+		
 	}
 
 	/**

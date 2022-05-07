@@ -16,6 +16,10 @@ public class Dealer extends Participant {
 		super(name);
 		this.strategy = strategy;
 	}
+	
+	public void setStrategy(DealerStrategy strategyToSet) {
+		this.strategy = strategyToSet;
+	}
 
 	@Override
 	public Action decideAction(Hand hand) {

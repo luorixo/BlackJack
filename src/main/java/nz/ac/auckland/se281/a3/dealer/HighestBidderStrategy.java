@@ -47,7 +47,7 @@ public class HighestBidderStrategy implements DealerStrategy{
 				return Action.HIT;
 			}
 		}else {
-			if(dealerScore >= highestBidderScore) {
+			if((dealerScore >= highestBidderScore) || (highestBidder.getHand().isBust())) {
 				return Action.HOLD;
 			}else {
 				return Action.HIT;
