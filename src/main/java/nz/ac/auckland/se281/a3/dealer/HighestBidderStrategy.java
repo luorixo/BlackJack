@@ -9,14 +9,14 @@ import nz.ac.auckland.se281.a3.Player;
 
 public class HighestBidderStrategy implements DealerStrategy{
 	
-	BlackJack currentGame;
+	BlackJack currentGame; // to store current game instance
 	public HighestBidderStrategy(BlackJack currentGame) {
 		this.currentGame = currentGame;
 	}
 	
 	/**
 	 * 
-	 * @return
+	 * @return the highest bidder (player who has bet the most chips)
 	 */
 	private Player getHighestBidder() {
 		List<Player> playerList = currentGame.getPlayers(); // get list of players

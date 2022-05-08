@@ -16,7 +16,7 @@ import nz.ac.auckland.se281.a3.dealer.TopWinnerStrategy;
  */
 public class BlackJack {
 	
-	private int totalRounds;
+	private int totalRounds; // to store the final round no.
 	private List<Player> players;
 	private Dealer dealer;
 	private Deck deck;
@@ -28,7 +28,7 @@ public class BlackJack {
 	}
 
 	/**
-	 * This constructor is for testing reasons
+	 * This constructor is for testing purposes only.
 	 * 
 	 * @param cards
 	 */
@@ -80,8 +80,7 @@ public class BlackJack {
 	}
 
 	/**
-	 * TODO This method initializes the Bots, you should change this method for
-	 * Task1
+	 * Initializes bots and adds them to the players list (strategy depends on user input).
 	 */
 	protected void initBots() {
 		String botStrategyString = getBotStrategy(); // gets bot strategy user input as string
@@ -96,8 +95,7 @@ public class BlackJack {
 	}
 
 	/**
-	 * TODO This method initializes the Dealer, you should change this method for
-	 * Task2
+	 * Initializes a new dealer instance with a 'target highest bidder' strategy.
 	 */
 	protected void initDealer() {
 		// initial dealer strategy: Target Highest Bidder
@@ -105,8 +103,11 @@ public class BlackJack {
 	}
 
 	/**
-	 * TODO This method prints and updates the results (wins and losses) you should
-	 * change this method for Task 2 and Task 3
+	 * Prints statistics for current round (which player(s) won and what they bet), and determines
+	 * if there should be a change in the dealer strategy (checks if any player has net wins greater
+	 * than 2).
+	 * 
+	 * @param round the current round number
 	 */
 	protected void printAndUpdateResults(int round) {
 		List<Player> twoNetWinsList = new ArrayList<>();
@@ -137,20 +138,15 @@ public class BlackJack {
 				}
 			}
 			dealer.setStrategy(new TopWinnerStrategy(this, topWinner));
-		}
-		
-		
-		
+		}	
 	}
 
 	/**
-	 * TODO This method should print the statistic of the game when it ends
+     * Prints end of game statistics. (player name, no. of wins, and no. of losses).
 	 */
 	protected void printGameStatistics() {
 		for(Player player : players) {
 			System.out.println(player.getName()+" won "+player.getWins()+" times and lost "+player.getLosses(totalRounds)+" times");
 		}
-		
 	}
-
 }
