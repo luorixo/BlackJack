@@ -1,8 +1,8 @@
 package nz.ac.auckland.se281.a3;
 
 /**
- * 
- * You can (and should) add new fields and/or methods
+ * Class representing a player object (human player of bot player)
+ * Has getters/setters for no. of wins/losses
  *
  */
 public abstract class Player extends Participant {

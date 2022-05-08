@@ -5,7 +5,13 @@ import nz.ac.auckland.se281.a3.Participant.Action;
 import java.util.Random;
 
 public class RandomStrategy implements BotStrategy {
-
+	
+	/**
+	 * Decides on action based on the bot's current score.
+	 * Decides action randomly (50% chance to hold/hit)
+	 * 
+	 * @return the action to take (HOLD or HIT)
+	 */
 	@Override
 	public Action decideAction(Hand hand) {
 		Random randomBool = new Random();
@@ -18,7 +24,13 @@ public class RandomStrategy implements BotStrategy {
 			return Action.HOLD;
 		}
 	}
-
+	
+	/**
+	 * Makes random bet from 1 to 100 (inclusive)
+	 * Made by pseudo-random no. generation
+	 * 
+	 * @return the random bet
+	 */
 	@Override
 	public int makeABet() {
 		Random randomInt = new Random();

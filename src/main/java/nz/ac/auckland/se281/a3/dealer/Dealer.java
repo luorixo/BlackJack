@@ -4,9 +4,9 @@ import nz.ac.auckland.se281.a3.Hand;
 import nz.ac.auckland.se281.a3.Participant;
 
 /**
+ * Class representing dealer object in the Blackjack game.
+ * Has a name and corresponding strategy.
  * 
- * You should change this class for Task 2
- *
  */
 public class Dealer extends Participant {
 	
@@ -18,12 +18,12 @@ public class Dealer extends Participant {
 	}
 	
 	public void setStrategy(DealerStrategy strategyToSet) {
-		this.strategy = strategyToSet;
+		this.strategy = strategyToSet; // sets strategy based on input
 	}
 
 	@Override
 	public Action decideAction(Hand hand) {
-		return strategy.decideAction(hand);
+		return strategy.decideAction(hand); // decides on an action (hold or hit), based on strategy
 	}
 
 }

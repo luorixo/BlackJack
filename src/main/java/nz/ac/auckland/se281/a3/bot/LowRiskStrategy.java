@@ -6,6 +6,13 @@ import nz.ac.auckland.se281.a3.Hand;
 import nz.ac.auckland.se281.a3.Participant.Action;
 
 public class LowRiskStrategy implements BotStrategy {
+	
+	/**
+	 * Decides on action based on the bot's current score
+	 * only holds if score is at least 17
+	 * 
+	 * @return the action to take (HOLD or HIT)
+	 */
 	@Override
 	public Action decideAction(Hand hand) {
 		int currentScore = hand.getScore(); // gets current score
@@ -17,7 +24,13 @@ public class LowRiskStrategy implements BotStrategy {
 			return Action.HIT;
 		}
 	}
-
+	
+	/**
+	 * Makes random bet from 10 to 50 (inclusive)
+	 * Made by pseudo-random no. generation
+	 * 
+	 * @return the random bet
+	 */
 	@Override
 	public int makeABet() {
 		Random randomInt = new Random();

@@ -21,6 +21,7 @@ public class HighestBidderStrategy implements DealerStrategy{
 	}
 	
 	/**
+	 * determines and returns highest bidder (player who has bet the most chips) for use inside the class
 	 * 
 	 * @return the highest bidder (player who has bet the most chips)
 	 */

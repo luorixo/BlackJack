@@ -15,7 +15,7 @@ public class Bot extends Player {
 		super(name);
 		this.botStrategy = botStrategy;
 	}
-
+	
 	@Override
 	public Action decideAction(Hand hand) {
 		return botStrategy.decideAction(hand); // decides action based on bot strategy
