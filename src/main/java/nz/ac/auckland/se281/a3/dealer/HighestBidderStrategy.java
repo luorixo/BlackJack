@@ -8,56 +8,67 @@ import nz.ac.auckland.se281.a3.Participant.Action;
 import nz.ac.auckland.se281.a3.Player;
 
 /**
- * This class is an implementation of a dealer strategy for
- * targeting the highest bidder in the game
+ * This class is an implementation of a dealer strategy for targeting the
+ * highest bidder in the game
  * 
  * @author Eugene Chua
  */
-public class HighestBidderStrategy implements DealerStrategy{
-	
+public class HighestBidderStrategy implements DealerStrategy {
+
 	BlackJack currentGame; // to store current game instance
+
 	public HighestBidderStrategy(BlackJack currentGame) {
 		this.currentGame = currentGame;
 	}
-	
+
 	/**
-	 * determines and returns highest bidder (player who has bet the most chips) for use inside the class
+	 * determines and returns highest bidder (player who has bet the most chips) for
+	 * use inside the class
 	 * 
 	 * @return the highest bidder (player who has bet the most chips)
 	 */
 	private Player getHighestBidder() {
 		List<Player> playerList = currentGame.getPlayers(); // get list of players
-		
+
 		Player highestBidder = playerList.get(0);
-		
-		// foreach code modified from: https://stackoverflow.com/questions/5710059/java-foreach-skip-first-iteration
-		for (Player player : playerList.subList(1, playerList.size())) { // iterates through playerList (skips first iteration)
-			
-			// checks if current player has a bet higher than current highestBidder, if so changes highestBidder
-			if(player.getHand().getBet() > highestBidder.getHand().getBet()) {
+
+		// foreach code modified from:
+		// https://stackoverflow.com/questions/5710059/java-foreach-skip-first-iteration
+		for (Player player : playerList.subList(1, playerList.size())) { // iterates through playerList (skips first
+																			// iteration)
+
+			// checks if current player has a bet higher than current highestBidder, if so
+			// changes highestBidder
+			if (player.getHand().getBet() > highestBidder.getHand().getBet()) {
 				highestBidder = player;
 			}
 		}
 		return highestBidder;
 	}
 
+	/**
+	 * Decides action based on the targeted highest bidder. Will always make move so
+	 * as to attempt to beat targeted player
+	 * 
+	 * @return action to take (hold or hit)
+	 */
 	@Override
 	public Action decideAction(Hand hand) {
 		Player highestBidder = getHighestBidder();
 		int highestBidderScore = highestBidder.getHand().getScore();
 		int dealerScore = hand.getScore();
-		
+
 		// checks if bidder has blackjack and dealer does not (edge case)
-		if(highestBidder.getHand().isBlackJack() && !hand.isBlackJack()) {
-			if(dealerScore >= 17) { // checks if current score is at least 17, if so holds, otherwise hits
+		if (highestBidder.getHand().isBlackJack() && !hand.isBlackJack()) {
+			if (dealerScore >= 17) { // checks if current score is at least 17, if so holds, otherwise hits
 				return Action.HOLD;
-			}else {
+			} else {
 				return Action.HIT;
 			}
-		}else { // if dealer has already beaten targeted player, holds, otherwise hits
-			if((dealerScore >= highestBidderScore) || (highestBidder.getHand().isBust())) {
+		} else { // if dealer has already beaten targeted player, holds, otherwise hits
+			if ((dealerScore >= highestBidderScore) || (highestBidder.getHand().isBust())) {
 				return Action.HOLD;
-			}else {
+			} else {
 				return Action.HIT;
 			}
 		}
