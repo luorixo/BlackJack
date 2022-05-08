@@ -110,34 +110,38 @@ public class BlackJack {
 	 * @param round the current round number
 	 */
 	protected void printAndUpdateResults(int round) {
-		List<Player> twoNetWinsList = new ArrayList<>();
+		List<Player> twoNetWinsList = new ArrayList<>(); // arraylist of players with net wins of at least 2
 		
-		for (Player player : players) {
+		for (Player player : players) { // iterates through players
 			String lostOrWon = "lost";
+			
+			// checks win condition (and edge cases) - player must beat dealer's score
 			if(!player.getHand().isBust()) {
 				if((player.getHand().getScore() > dealer.getHand().getScore()) || (player.getHand().isBlackJack() && !dealer.getHand().isBlackJack()) || dealer.getHand().isBust()) {
 					player.incrementWins();
 					lostOrWon = "won";
 				}
 			}
+			// checks if any players have net wins of at least 2, if so adds them to twoNetWinsList arraylist
 			if((round >= 2) && (player.getNetWins(round) >= 2)) {
 				twoNetWinsList.add(player);
 			}
 			
-			System.out.println("Round "+round+": "+player.getName()+" "+lostOrWon+" "+player.getHand().getBet()+" chips");
+			System.out.println("Round "+round+": "+player.getName()+" "+lostOrWon+" "+player.getHand().getBet()+" chips"); // print round statistics
 		}
 		
+		// checks if no player has net wins of at least 2 - sets strategy accordingly
 		if(twoNetWinsList.isEmpty()) {
-			dealer.setStrategy(new HighestBidderStrategy(this));
-		}else {
+			dealer.setStrategy(new HighestBidderStrategy(this)); // sets dealer strategy to target top bidder
+		}else { // if any player(s) does have net wins of at least 2 - sets dealer strategy to target top winner
 			Player topWinner = twoNetWinsList.get(0);
 			// foreach code modified from: https://stackoverflow.com/questions/5710059/java-foreach-skip-first-iteration
 			for (Player twoNetWinsPlayer : twoNetWinsList.subList(1, twoNetWinsList.size())) {
-				if(twoNetWinsPlayer.getNetWins(round) > topWinner.getNetWins(round)) {
+				if(twoNetWinsPlayer.getNetWins(round) > topWinner.getNetWins(round)) { // decides who is the top winner
 					topWinner = twoNetWinsPlayer;
 				}
 			}
-			dealer.setStrategy(new TopWinnerStrategy(this, topWinner));
+			dealer.setStrategy(new TopWinnerStrategy(this, topWinner)); // sets dealer strategy to target top winner
 		}	
 	}
 
@@ -145,7 +149,8 @@ public class BlackJack {
      * Prints end of game statistics. (player name, no. of wins, and no. of losses).
 	 */
 	protected void printGameStatistics() {
-		for(Player player : players) {
+		for(Player player : players) { // iterate through all players in the game
+			// print end of game statistics for player
 			System.out.println(player.getName()+" won "+player.getWins()+" times and lost "+player.getLosses(totalRounds)+" times");
 		}
 	}

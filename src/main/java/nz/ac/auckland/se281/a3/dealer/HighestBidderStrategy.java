@@ -7,6 +7,12 @@ import nz.ac.auckland.se281.a3.Hand;
 import nz.ac.auckland.se281.a3.Participant.Action;
 import nz.ac.auckland.se281.a3.Player;
 
+/**
+ * This class is an implementation of a dealer strategy for
+ * targeting the highest bidder in the game
+ * 
+ * @author Eugene Chua
+ */
 public class HighestBidderStrategy implements DealerStrategy{
 	
 	BlackJack currentGame; // to store current game instance
@@ -40,13 +46,14 @@ public class HighestBidderStrategy implements DealerStrategy{
 		int highestBidderScore = highestBidder.getHand().getScore();
 		int dealerScore = hand.getScore();
 		
+		// checks if bidder has blackjack and dealer does not (edge case)
 		if(highestBidder.getHand().isBlackJack() && !hand.isBlackJack()) {
-			if(dealerScore >= 17) {
+			if(dealerScore >= 17) { // checks if current score is at least 17, if so holds, otherwise hits
 				return Action.HOLD;
 			}else {
 				return Action.HIT;
 			}
-		}else {
+		}else { // if dealer has already beaten targeted player, holds, otherwise hits
 			if((dealerScore >= highestBidderScore) || (highestBidder.getHand().isBust())) {
 				return Action.HOLD;
 			}else {
