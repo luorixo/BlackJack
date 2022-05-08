@@ -15,7 +15,8 @@ import nz.ac.auckland.se281.a3.dealer.TopWinnerStrategy;
  * You can add new methods and/or new instance fields
  */
 public class BlackJack {
-
+	
+	private int totalRounds;
 	private List<Player> players;
 	private Dealer dealer;
 	private Deck deck;
@@ -74,6 +75,7 @@ public class BlackJack {
 				res = Main.scanner.next();
 			}
 		} while (res.equals("yes"));
+		totalRounds = round;
 		printGameStatistics(); // when the user terminates the game print the statistics
 	}
 
@@ -145,7 +147,10 @@ public class BlackJack {
 	 * TODO This method should print the statistic of the game when it ends
 	 */
 	protected void printGameStatistics() {
-
+		for(Player player : players) {
+			System.out.println(player.getName()+" won "+player.getWins()+" times and lost "+player.getLosses(totalRounds)+" times");
+		}
+		
 	}
 
 }
