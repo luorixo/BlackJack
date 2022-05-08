@@ -111,12 +111,14 @@ public class BlackJack {
 		
 		for (Player player : players) {
 			if(!player.getHand().isBust()) {
-				if((player.getHand().getScore() > dealer.getHand().getScore()) || (player.getHand().isBlackJack() && !dealer.getHand().isBlackJack())) {
+				if((player.getHand().getScore() > dealer.getHand().getScore()) || (player.getHand().isBlackJack() && !dealer.getHand().isBlackJack()) || dealer.getHand().isBust()) {
 					player.incrementWins();
 				}
 			}
+			System.out.println("PLAYER: "+player.getName()+" NET WINS: "+ player.getNetWins(round));
 			if((round >= 2) && (player.getNetWins(round) >= 2)) {
 				twoNetWinsList.add(player);
+				System.out.println("ADDING PLAYER TO WIN LIST!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 			}
 		}
 		

@@ -39,6 +39,7 @@ public class HighestBidderStrategy implements DealerStrategy{
 		Player highestBidder = getHighestBidder();
 		int highestBidderScore = highestBidder.getHand().getScore();
 		int dealerScore = hand.getScore();
+		System.out.println("DEALER TARGETS: " + highestBidder.getName());
 		
 		if(highestBidder.getHand().isBlackJack() && !hand.isBlackJack()) {
 			if(dealerScore >= 17) {
