@@ -110,16 +110,18 @@ public class BlackJack {
 		List<Player> twoNetWinsList = new ArrayList<>();
 		
 		for (Player player : players) {
+			String lostOrWon = "lost";
 			if(!player.getHand().isBust()) {
 				if((player.getHand().getScore() > dealer.getHand().getScore()) || (player.getHand().isBlackJack() && !dealer.getHand().isBlackJack()) || dealer.getHand().isBust()) {
 					player.incrementWins();
+					lostOrWon = "won";
 				}
 			}
-			System.out.println("PLAYER: "+player.getName()+" NET WINS: "+ player.getNetWins(round));
 			if((round >= 2) && (player.getNetWins(round) >= 2)) {
 				twoNetWinsList.add(player);
-				System.out.println("ADDING PLAYER TO WIN LIST!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 			}
+			
+			System.out.println("Round "+round+": "+player.getName()+" "+lostOrWon+" "+player.getHand().getBet()+" chips");
 		}
 		
 		if(twoNetWinsList.isEmpty()) {
@@ -133,8 +135,9 @@ public class BlackJack {
 				}
 			}
 			dealer.setStrategy(new TopWinnerStrategy(this, topWinner));
-			System.out.println("DEALER TARGETS: " + topWinner.getName());
 		}
+		
+		
 		
 	}
 
