@@ -7,7 +7,7 @@ import nz.ac.auckland.se281.a3.Player;
  * you should change this class for TASK 1
  */
 public class Bot extends Player {
-	
+
 	// initializing botStrategy variable
 	private final BotStrategy botStrategy;
 
@@ -15,7 +15,7 @@ public class Bot extends Player {
 		super(name);
 		this.botStrategy = botStrategy;
 	}
-	
+
 	@Override
 	public Action decideAction(Hand hand) {
 		return botStrategy.decideAction(hand); // decides action based on bot strategy

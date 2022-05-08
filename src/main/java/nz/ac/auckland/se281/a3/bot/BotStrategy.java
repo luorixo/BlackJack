@@ -5,5 +5,6 @@ import nz.ac.auckland.se281.a3.Participant.Action;
 
 public interface BotStrategy {
 	Action decideAction(Hand hand); // action (hold or hit) to make
-	int makeABet(); //  how many chips to bet
+
+	int makeABet(); // how many chips to bet
 }
