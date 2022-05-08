@@ -20,7 +20,7 @@ public abstract class Player extends Participant {
 	 * 
 	 */
 	public void incrementWins() {
-		this.wins ++;
+		this.wins++;
 	}
 	
 	public int getWins() {
@@ -29,6 +29,10 @@ public abstract class Player extends Participant {
 	
 	public int getLosses(int round) {
 		return (round - wins);
+	}
+	
+	public int getNetWins(int round) {
+		return (getWins() - getLosses(round));
 	}
 
 }

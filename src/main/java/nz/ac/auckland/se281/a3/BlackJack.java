@@ -7,6 +7,7 @@ import nz.ac.auckland.se281.a3.bot.Bot;
 import nz.ac.auckland.se281.a3.bot.BotFactory;
 import nz.ac.auckland.se281.a3.dealer.Dealer;
 import nz.ac.auckland.se281.a3.dealer.HighestBidderStrategy;
+import nz.ac.auckland.se281.a3.dealer.TopWinnerStrategy;
 
 /**
  * Unless it is specified in the JavaDoc, you cannot change any methods.
@@ -106,6 +107,7 @@ public class BlackJack {
 	 * change this method for Task 2 and Task 3
 	 */
 	protected void printAndUpdateResults(int round) {
+		List<Player> twoNetWinsList = new ArrayList<>();
 		
 		for (Player player : players) {
 			if(!player.getHand().isBust()) {
@@ -113,7 +115,23 @@ public class BlackJack {
 					player.incrementWins();
 				}
 			}
-			
+			if((round >= 2) && (player.getNetWins(round) >= 2)) {
+				twoNetWinsList.add(player);
+			}
+		}
+		
+		if(twoNetWinsList.isEmpty()) {
+			dealer.setStrategy(new HighestBidderStrategy(this));
+		}else {
+			Player topWinner = twoNetWinsList.get(0);
+			// foreach code modified from: https://stackoverflow.com/questions/5710059/java-foreach-skip-first-iteration
+			for (Player twoNetWinsPlayer : twoNetWinsList.subList(1, twoNetWinsList.size())) {
+				if(twoNetWinsPlayer.getNetWins(round) > topWinner.getNetWins(round)) {
+					topWinner = twoNetWinsPlayer;
+				}
+			}
+			dealer.setStrategy(new TopWinnerStrategy(this, topWinner));
+			System.out.println("DEALER TARGETS: " + topWinner.getName());
 		}
 		
 	}
