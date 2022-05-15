@@ -16,6 +16,9 @@ public abstract class Player extends Participant {
 
 	public abstract int makeABet();
 
+	/**
+	 * Player method to increment the number of wins by one win when called.
+	 */
 	public void incrementWins() {
 		this.wins++;
 	}
@@ -24,10 +27,24 @@ public abstract class Player extends Participant {
 		return wins;
 	}
 
+	/**
+	 * Computes and returns the total number of losses. Calculates this by doing
+	 * (current round - wins).
+	 * 
+	 * @param round the current round
+	 * @return the number of losses (round - wins)
+	 */
 	public int getLosses(int round) {
 		return (round - wins);
 	}
 
+	/**
+	 * Computes and returns the total net wins of the player. Calculates this by
+	 * doing wins - losses.
+	 * 
+	 * @param round the current round
+	 * @return the player's net wins
+	 */
 	public int getNetWins(int round) {
 		return (getWins() - getLosses(round));
 	}
