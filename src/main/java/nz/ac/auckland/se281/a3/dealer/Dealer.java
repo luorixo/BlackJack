@@ -12,6 +12,13 @@ public class Dealer extends Participant {
 
 	private DealerStrategy strategy; // to store strategy
 
+	/**
+	 * Dealer constructor. Takes in a name and an initial dealer strategy, and
+	 * assigns the dealer strategy to the strategy variable.
+	 * 
+	 * @param name     the name of the dealer
+	 * @param strategy the initial strategy to set
+	 */
 	public Dealer(String name, DealerStrategy strategy) {
 		super(name);
 		this.strategy = strategy;

@@ -149,7 +149,7 @@ public class BlackJack {
 					topWinner = twoNetWinsPlayer;
 				}
 			}
-			dealer.setStrategy(new TopWinnerStrategy(this, topWinner)); // sets dealer strategy to target top winner
+			dealer.setStrategy(new TopWinnerStrategy(topWinner)); // sets dealer strategy to target top winner
 		}
 	}
 

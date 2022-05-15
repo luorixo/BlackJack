@@ -15,8 +15,14 @@ import nz.ac.auckland.se281.a3.Player;
  */
 public class HighestBidderStrategy implements DealerStrategy {
 
-	BlackJack currentGame; // to store current game instance
+	private final BlackJack currentGame; // to store current game instance
 
+	/**
+	 * HighestBidderStrategy constructor that takes in the current game and sets it
+	 * to the variable currentGame.
+	 * 
+	 * @param currentGame the current game
+	 */
 	public HighestBidderStrategy(BlackJack currentGame) {
 		this.currentGame = currentGame;
 	}

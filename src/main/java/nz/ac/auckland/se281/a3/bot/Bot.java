@@ -11,6 +11,13 @@ public class Bot extends Player {
 	// initializing botStrategy variable
 	private final BotStrategy botStrategy;
 
+	/**
+	 * Bot constructor. Takes in the bot name and the strategy for the bot to
+	 * follow, and stores the strategy in the botStrategy variable.
+	 * 
+	 * @param name        the name of the bot
+	 * @param botStrategy the strategy for the bot to follow
+	 */
 	public Bot(String name, BotStrategy botStrategy) {
 		super(name);
 		this.botStrategy = botStrategy;

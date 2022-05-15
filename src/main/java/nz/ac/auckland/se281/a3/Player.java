@@ -16,38 +16,19 @@ public abstract class Player extends Participant {
 
 	public abstract int makeABet();
 
-	/**
-	 * Adder function to increment wins by 1
-	 */
 	public void incrementWins() {
 		this.wins++;
 	}
 
-	/**
-	 * Getter function to get no. of wins
-	 * 
-	 * @return no. of current wins
-	 */
 	public int getWins() {
 		return wins;
 	}
 
-	/**
-	 * Getter function to get no. of losses
-	 * 
-	 * @return no. of current losses
-	 */
 	public int getLosses(int round) {
 		return (round - wins);
 	}
 
-	/**
-	 * Getter function to get the net number of wins (wins - losses)
-	 * 
-	 * @return no. of net wins
-	 */
 	public int getNetWins(int round) {
 		return (getWins() - getLosses(round));
 	}
-
 }

@@ -1,11 +1,8 @@
 package nz.ac.auckland.se281.a3.dealer;
 
-import java.util.List;
-
-import nz.ac.auckland.se281.a3.BlackJack;
 import nz.ac.auckland.se281.a3.Hand;
-import nz.ac.auckland.se281.a3.Player;
 import nz.ac.auckland.se281.a3.Participant.Action;
+import nz.ac.auckland.se281.a3.Player;
 
 /**
  * This class is an implementation of a dealer strategy for targeting the top
@@ -15,12 +12,15 @@ import nz.ac.auckland.se281.a3.Participant.Action;
  */
 public class TopWinnerStrategy implements DealerStrategy {
 
-	Player topWinner; // store top winner target
+	private final Player topWinner; // store top winner target
 
-	BlackJack currentGame;
-
-	public TopWinnerStrategy(BlackJack currentGame, Player topWinner) {
-		this.currentGame = currentGame;
+	/**
+	 * TopWinnerStrategy constructor that takes in the current top winner (most net
+	 * wins) and sets it to the topWinner variable
+	 * 
+	 * @param topWinner the current top winner
+	 */
+	public TopWinnerStrategy(Player topWinner) {
 		this.topWinner = topWinner;
 	}
 
