@@ -1,5 +1,6 @@
 # A CLI Variation of BlackJack in Java!
 
+Made using only Java OOP principles
 Clone and run ./mvnw clean compile and ./mvnw exec:java (for UNIX systems)
 
 When you run the game:
