@@ -2,7 +2,7 @@
 
 Made using only Java OOP principles
 
-Clone and run ./mvnw clean compile and ./mvnw exec:java (for UNIX systems)
+Clone and run `./mvnw clean compile` and `./mvnw exec:java` (for UNIX systems)
 
 When you run the game:
 1) You'll get an option of 3 strategies to face - low-risk, high-risk, or random. Choose one
