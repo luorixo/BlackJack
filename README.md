@@ -1,5 +1,7 @@
 # A CLI Variation of BlackJack in Java!
 
+Clone and run ./mvnw clean compile and ./mvnw exec:java (for UNIX systems)
+
 When you run the game:
 1) You'll get an option of 3 strategies to face - low-risk, high-risk, or random. Choose one
 2) You get put on a table of 4 bots + 1 dealer
