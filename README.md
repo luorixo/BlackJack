@@ -10,4 +10,5 @@ When you run the game:
 3) Go and play BlackJack!
 
 A sneak preview of the game:
-![Game Preview](http://url/to/img.png)
+
+![Game Preview](https://github.com/luorixo/BlackJack/blob/main/src/resources/blackjack.png?raw=true)
